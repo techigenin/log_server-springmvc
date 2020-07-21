@@ -4,7 +4,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.atheneandaurros</groupId>
+  <groupId>com.looking_glass_compliance</groupId>
   <artifactId>log-server</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
@@ -21,9 +21,9 @@
 
 		<hibernate.version>5.4.1.Final</hibernate.version>
 		<mysql.connector.version>8.0.20</mysql.connector.version>
-		<springframework.version>5.1.7.RELEASE</springframework.version>
-		<c3po.version>0.9.5.2</c3po.version>
-		<jackson.databind.version>2.9.5</jackson.databind.version>    
+		<springframework.version>[5.1.13,)</springframework.version>
+		<c3po.version>[0.9.5.3,)</c3po.version>
+		<jackson.databind.version>[2.9.10.5,)</jackson.databind.version>    
 		<jackson.datatype.version>2.11.0</jackson.datatype.version>
 	</properties>
 
