@@ -41,6 +41,8 @@ public class UserRestController {
 		theUser.setId(0);
 		userService.save(theUser);
 		
+		System.out.println(theUser.toString());
+		
 		return theUser;
 	}
 	
@@ -57,7 +59,7 @@ public class UserRestController {
 	}
 	
 	@DeleteMapping("/users/{userId}")
-	public String deleteLog(@PathVariable int userId) {
+	public User deleteLog(@PathVariable int userId) {
 		User tempUser = userService.getSingle(userId);
 		
 		if (tempUser == null) {
@@ -66,6 +68,6 @@ public class UserRestController {
 		
 		userService.delete(userId);
 		
-		return "Deleted user with id - " + userId;
+		return tempUser;
 	}
 }
