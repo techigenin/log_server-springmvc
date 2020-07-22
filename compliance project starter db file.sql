@@ -58,6 +58,8 @@ CREATE TABLE `users` (
   `user_id` int NOT NULL AUTO_INCREMENT,
   `first_name` varchar(50),
   `last_name` varchar(50),
+  `phone_number` varchar(15),
+  `email` varchar(50),
   `status` varchar(10),
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
@@ -100,11 +102,11 @@ INSERT INTO `calls` (`date`, `duration`, `sales_person_id`, `client_id`)
 		('2020-02-02','00:45:01',2,2),
 		('2019-07-04','01:16:00',3,3);
 
-INSERT INTO `users` (`first_name`, `last_name`, `status`)
+INSERT INTO `users` (`first_name`, `last_name`, `phone_number`, `email`, `status`)
 	VALUES
-		('Greg','Garrick', 'guest'),
-		('Hattie','Hondo', 'admin'),
-		('Julie','Jaxson', 'user');                
+		('Greg','Garrick', '(123)456-7890', 'first@thatmail.com', 'guest'),
+		('Hattie','Hondo', '(098)765-4321', 'second@thatmail.com', 'admin'),
+		('Julie','Jaxson', '(432)109-8765', 'third@thatmail.com', 'user');                
 
 INSERT INTO `comments` (`log_id`, `comment`, `time`)
 	VALUES
@@ -118,19 +120,19 @@ INSERT INTO `logs` (`call_id`, `user_id`, `date`)
         (2, 1, '2020-06-15'),
         (1, 3, '2020-06-16');
         
-ALTER TABLE `calls`
-ADD FOREIGN KEY (`sales_person_id`) REFERENCES `sales_people`(`sales_person_id`); 
+-- ALTER TABLE `calls`
+-- ADD FOREIGN KEY (`sales_person_id`) REFERENCES `sales_people`(`sales_person_id`); 
 
-ALTER TABLE `calls`
-ADD FOREIGN KEY (`client_id`) REFERENCES `clients`(`client_id`); 
+-- ALTER TABLE `calls`
+-- ADD FOREIGN KEY (`client_id`) REFERENCES `clients`(`client_id`); 
 
-ALTER TABLE `logs`
-ADD FOREIGN KEY (`call_id`) REFERENCES `calls`(`call_id`); 
+-- ALTER TABLE `logs`
+-- ADD FOREIGN KEY (`call_id`) REFERENCES `calls`(`call_id`); 
 
-ALTER TABLE `logs`
-ADD FOREIGN KEY (`user_id`) REFERENCES `users`(`user_id`); 
+-- ALTER TABLE `logs`
+-- ADD FOREIGN KEY (`user_id`) REFERENCES `users`(`user_id`); 
 
-ALTER TABLE `comments`
-ADD FOREIGN KEY (`log_id`) REFERENCES `logs`(`log_id`); 
+-- ALTER TABLE `comments`
+-- ADD FOREIGN KEY (`log_id`) REFERENCES `logs`(`log_id`); 
 
 COMMIT
