@@ -11,7 +11,7 @@ public class User {
 
 	@Id
 	@Column(name = "user_id")
-	private int userId;
+	private int id;
 	
 	@Column(name = "first_name")
 	private String firstName;
@@ -30,17 +30,20 @@ public class User {
 	
 	public User() {}
 
-	public User(String firstName, String lastName) {
+	public User(String firstName, String lastName, String phoneNumber, String email, String status) {
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.phoneNumber = phoneNumber;
+		this.email = email;
+		this.status = status;
+	}
+	
+	public int getId() {
+		return id;
 	}
 
-	public int getUserId() {
-		return userId;
-	}
-
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setId(int userId) {
+		this.id = userId;
 	}
 
 	public String getFirstName() {
@@ -85,7 +88,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", firstName=" + firstName + ", lastName=" + lastName + ", phoneNumber="
+		return "User [userId=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", phoneNumber="
 				+ phoneNumber + ", email=" + email + ", status=" + status + "]";
 	}
 }

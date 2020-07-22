@@ -15,7 +15,7 @@ public class CallDTO {
 	public CallDTO() {}
 	
 	public CallDTO(Call call) {
-		this.callId = call.getCallId();
+		this.callId = call.getId();
 		this.dateString = call.getDate().toString();
 		this.durationString = call.getDuration().toString();
 		this.salesPerson = call.getSalesPerson();

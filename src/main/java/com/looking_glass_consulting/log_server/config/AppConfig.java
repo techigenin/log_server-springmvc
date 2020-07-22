@@ -20,6 +20,7 @@ import org.springframework.format.support.FormattingConversionService;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -100,6 +101,11 @@ public class AppConfig implements WebMvcConfigurer {
 		props.setProperty("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
 		
 		return props;
+	}
+
+	@Override
+	public void addCorsMappings(CorsRegistry registry) {
+		registry.addMapping("/**");
 	}
 	
 //	@Bean

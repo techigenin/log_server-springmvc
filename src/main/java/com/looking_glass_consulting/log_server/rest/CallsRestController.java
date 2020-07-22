@@ -46,7 +46,7 @@ public class CallsRestController {
 	public CallDTO saveCall(@RequestBody CallDTO callDTO) {
 		Call theCall = new Call(callDTO);
 		
-		theCall.setCallId(0);
+		theCall.setId(0);
 		callService.save(theCall);
 		
 		return new CallDTO(theCall);

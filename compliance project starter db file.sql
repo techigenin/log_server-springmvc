@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `calls`;--
 CREATE TABLE `calls` (
   `call_id` int NOT NULL AUTO_INCREMENT,
   `date` date,
-  `duration` time,
+  `duration` varchar(10),
   `sales_person_id` int,
   `client_id` int,
   PRIMARY KEY (`call_id`)
@@ -46,9 +46,10 @@ DROP TABLE IF EXISTS `comments`;
 CREATE TABLE `comments` (
   `comment_id` int NOT NULL AUTO_INCREMENT,
   `log_id` int,
+  `concern_level` varchar(10),
   `statement` text,
   `comment` text,
-  `time` time,
+  `time` varchar(10),
   PRIMARY KEY (`comment_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
@@ -98,9 +99,9 @@ INSERT INTO `clients` (`first_name`, `last_name`, `phone_number`)
         
 INSERT INTO `calls` (`date`, `duration`, `sales_person_id`, `client_id`)
 	VALUES
-		('2019-01-01','00:12:34',1,1),
-		('2020-02-02','00:45:01',2,2),
-		('2019-07-04','01:16:00',3,3);
+		('2020-05-10','00:12:34',1,1),
+		('2020-04-15','00:45:01',2,2),
+		('2020-06-01','01:16:00',3,3);
 
 INSERT INTO `users` (`first_name`, `last_name`, `phone_number`, `email`, `status`)
 	VALUES
@@ -108,17 +109,21 @@ INSERT INTO `users` (`first_name`, `last_name`, `phone_number`, `email`, `status
 		('Hattie','Hondo', '(098)765-4321', 'second@thatmail.com', 'admin'),
 		('Julie','Jaxson', '(432)109-8765', 'third@thatmail.com', 'user');                
 
-INSERT INTO `comments` (`log_id`, `comment`, `time`)
+INSERT INTO `comments` (`log_id`, `concern_level`, `statement`, `comment`, `time`)
 	VALUES
-		(1, 'Wowza!', '00:01:15'),
-        (2, 'Gee Whiz!', '00:25:25'),
-        (1, 'Whooda Thunk?!?', '00:59:12');
+		(1, 'Good', 'Oh Gee Whiz!', 'So much good!', '00:01:15'),
+        (1, 'Excellent', 'So exciting', 'Even more good!', '00:25:25'),
+        (1, 'Concerning', 'The sun is green!', 'But why..?', '00:59:12'),
+        (2, 'Bad', 'Something bad', 'On No!', '01:03:02'),
+        (3, 'Bad', 'Creepy Crawlers!', '...!', '03:02:01'),
+        (3, 'Neutral', 'And then we had ice cream', 'Me too..?', '04:04:01');
         
 INSERT INTO `logs` (`call_id`, `user_id`, `date`)
 	VALUES
-		(1, 2, '2020-05-20'),
-        (2, 1, '2020-06-15'),
-        (1, 3, '2020-06-16');
+		(2, 1, '2019-01-01'),
+		(1, 1, '2020-02-03'),
+		(3, 3, '2019-12-01'),
+		(2, 3, '2019-12-01');
         
 -- ALTER TABLE `calls`
 -- ADD FOREIGN KEY (`sales_person_id`) REFERENCES `sales_people`(`sales_person_id`); 

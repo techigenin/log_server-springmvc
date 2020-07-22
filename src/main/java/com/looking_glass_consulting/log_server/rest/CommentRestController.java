@@ -45,7 +45,7 @@ public class CommentRestController {
 	public CommentDTO saveComment(@RequestBody CommentDTO commentDTO) {
 		Comment theComment = new Comment(commentDTO);
 		
-		theComment.setCommentId(0);
+		theComment.setId(0);
 		commentService.save(theComment);
 		
 		return new CommentDTO(theComment);

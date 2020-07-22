@@ -21,7 +21,7 @@ public class Call{
 
 	@Id
 	@Column(name = "call_id")
-	private int callId;
+	private int id;
 	
 	@Column(name = "date")	
 	private LocalDate date;
@@ -57,19 +57,19 @@ public class Call{
 	}
 	
 	public Call(CallDTO callDTO) {
-		this.callId = callDTO.getCallId();
+		this.id = callDTO.getCallId();
 		this.date = LocalDate.parse(callDTO.getDateString());
 		this.duration = LocalTime.parse(callDTO.getDurationString());
 		this.salesPerson = callDTO.getSalesPerson();
 		this.client = callDTO.getClient();
 	}
 
-	public int getCallId() {
-		return callId;
+	public int getId() {
+		return id;
 	}
 
-	public void setCallId(int callId) {
-		this.callId = callId;
+	public void setId(int callId) {
+		this.id = callId;
 	}
 
 	public LocalDate getDate() {
@@ -106,7 +106,7 @@ public class Call{
 
 	@Override
 	public String toString() {
-		return "Call [callId=" + callId + ", date=" + date + ", duration=" + duration + ", salesPerson=" + salesPerson
+		return "Call [callId=" + id + ", date=" + date + ", duration=" + duration + ", salesPerson=" + salesPerson
 				+ ", client=" + client + "]";
 	}
 }

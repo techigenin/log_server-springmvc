@@ -11,7 +11,7 @@ public class Client {
 	
 	@Id
 	@Column(name = "client_id")
-	private int clientId;
+	private int id;
 	
 	@Column(name = "first_name")
 	private String firstName;
@@ -30,12 +30,12 @@ public class Client {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public int getClientId() {
-		return clientId;
+	public int getId() {
+		return id;
 	}
 
-	public void setClientId(int clientId) {
-		this.clientId = clientId;
+	public void setId(int clientId) {
+		this.id = clientId;
 	}
 
 	public String getFirstName() {
@@ -64,7 +64,7 @@ public class Client {
 
 	@Override
 	public String toString() {
-		return "Client [clientId=" + clientId + ", firstName=" + firstName + ", lastName=" + lastName + ", phoneNumber="
+		return "Client [clientId=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", phoneNumber="
 				+ phoneNumber + "]";
 	}
 }

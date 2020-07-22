@@ -36,7 +36,7 @@ public class ClientRestController {
 	
 	@PostMapping("/clients")
 	public Client saveClient(@RequestBody Client theClient) {
-		theClient.setClientId(0);
+		theClient.setId(0);
 		clientService.save(theClient);
 		
 		return theClient;
@@ -44,7 +44,7 @@ public class ClientRestController {
 	
 	@PutMapping("/clients")
 	public Client updateClient(@RequestBody Client theClient) {
-		Client tempClient = clientService.getSingle(theClient.getClientId());
+		Client tempClient = clientService.getSingle(theClient.getId());
 		
 		if (tempClient == null) {
 			throw new RuntimeException("No such client");
