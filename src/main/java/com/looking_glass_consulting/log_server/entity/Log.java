@@ -6,6 +6,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -19,8 +21,9 @@ import com.looking_glass_consulting.log_server.entity.dto.LogDTO;
 public class Log {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "log_id")
-	private int logId;
+	private int id;
 	
 	@ManyToOne(cascade = {
 		CascadeType.DETACH,
@@ -53,18 +56,18 @@ public class Log {
 	}
 	
 	public Log(LogDTO logDTO) {
-		this.logId = logDTO.getLogId();
-		this.call = new Call(logDTO.getCallDTO());
-		this.user = logDTO.getListener();
-		this.date = LocalDate.parse(logDTO.getDateString());
+		this.id = logDTO.getId();
+		this.call = new Call(logDTO.getCall());
+		this.user = logDTO.getUser();
+		this.date = LocalDate.parse(logDTO.getDate());
 	}
 
-	public int getLogId() {
-		return logId;
+	public int getId() {
+		return id;
 	}
 
-	public void setLogId(int logId) {
-		this.logId = logId;
+	public void setId(int logId) {
+		this.id = logId;
 	}
 
 	public Call getCall() {
@@ -93,6 +96,6 @@ public class Log {
 
 	@Override
 	public String toString() {
-		return "Log [logId=" + logId + ", call=" + call + ", listener=" + user + ", date=" + date + "]";
+		return "Log [logId=" + id + ", call=" + call + ", listener=" + user + ", date=" + date + "]";
 	}
 }

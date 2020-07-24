@@ -13,7 +13,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.looking_glass_consulting.log_server.entity.Call;
+import com.looking_glass_consulting.log_server.entity.Client;
 import com.looking_glass_consulting.log_server.entity.Log;
+import com.looking_glass_consulting.log_server.entity.SalesPerson;
 import com.looking_glass_consulting.log_server.entity.dto.LogDTO;
 import com.looking_glass_consulting.log_server.service.DbService;
 
@@ -46,7 +49,7 @@ public class LogsRestController {
 		
 		Log theLog = new Log(logDTO);
 		
-		theLog.setLogId(0);
+		theLog.setId(0);
 		logsService.save(theLog);
 		
 		return new LogDTO(theLog);
@@ -54,7 +57,7 @@ public class LogsRestController {
 	
 	@PutMapping("/logs")
 	public LogDTO updateLog(@RequestBody LogDTO logDTO) {
-		Log tempLog = logsService.getSingle(logDTO.getLogId());
+		Log tempLog = logsService.getSingle(logDTO.getId());
 		
 		if (tempLog == null) {
 			throw new RuntimeException("No such log");

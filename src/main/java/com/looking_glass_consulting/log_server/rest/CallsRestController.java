@@ -46,10 +46,14 @@ public class CallsRestController {
 	public CallDTO saveCall(@RequestBody CallDTO callDTO) {
 		Call theCall = new Call(callDTO);
 		
+		return new CallDTO(saveCall(theCall));
+	}
+	
+	Call saveCall(Call theCall) {
 		theCall.setId(0);
 		callService.save(theCall);
 		
-		return new CallDTO(theCall);
+		return theCall;		
 	}
 	
 	@PutMapping("/calls")

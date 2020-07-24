@@ -1,5 +1,7 @@
 package com.looking_glass_consulting.log_server.entity.dto;
 
+import java.time.LocalDate;
+
 import com.looking_glass_consulting.log_server.entity.Call;
 import com.looking_glass_consulting.log_server.entity.Client;
 import com.looking_glass_consulting.log_server.entity.SalesPerson;
@@ -7,8 +9,8 @@ import com.looking_glass_consulting.log_server.entity.SalesPerson;
 public class CallDTO {
 	
 	private int callId;
-	private String dateString;
-	private String durationString;
+	private LocalDate date;
+	private String duration;
 	private SalesPerson salesPerson;
 	private Client client;
 
@@ -16,8 +18,8 @@ public class CallDTO {
 	
 	public CallDTO(Call call) {
 		this.callId = call.getId();
-		this.dateString = call.getDate().toString();
-		this.durationString = call.getDuration().toString();
+		this.date = call.getDate();
+		this.duration = call.getDuration();
 		this.salesPerson = call.getSalesPerson();
 		this.client = call.getClient();
 	}
@@ -30,20 +32,21 @@ public class CallDTO {
 		this.callId = callId;
 	}
 
-	public String getDateString() {
-		return dateString;
+	public String getDate() {
+		return date.toString();
 	}
 
-	public void setDateString(String date) {
-		this.dateString = date;
+	public void setDate(String dateString) {
+		dateString = dateString.split("T")[0];
+		this.date = LocalDate.parse(dateString);
 	}
 
-	public String getDurationString() {
-		return durationString;
+	public String getDuration() {
+		return duration;
 	}
 
-	public void setDurationString(String duration) {
-		this.durationString = duration;
+	public void setDuration(String duration) {
+		this.duration = duration;
 	}
 
 	public SalesPerson getSalesPerson() {

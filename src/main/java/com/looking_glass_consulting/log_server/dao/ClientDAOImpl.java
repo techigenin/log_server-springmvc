@@ -40,6 +40,7 @@ public class ClientDAOImpl implements DbDAO<Client> {
 		Client client = null;
 		
 		try {
+			System.out.println(theQuery.getQueryString());
 			client = theQuery.getSingleResult();
 		} catch (NoResultException ex) {
 			System.out.println("Exception --> No Client found with Id: " + id);
@@ -51,7 +52,7 @@ public class ClientDAOImpl implements DbDAO<Client> {
 	@Override
 	public void save(Client client) {
 		Session currentSession = sessionFactory.getCurrentSession();
-		currentSession.saveOrUpdate(client);
+		currentSession.save(client);
 	}
 
 	@Override
