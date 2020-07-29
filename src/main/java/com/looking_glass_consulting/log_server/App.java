@@ -17,7 +17,7 @@ public class App
     	String url, user, pass;
     	
     	
-    	try (FileInputStream fis = new FileInputStream("src/main/resources/persistence-mysql.properties")) {
+    	try (FileInputStream fis = new FileInputStream("../persistence-mysql.properties")) {
     		props.load(fis);
     		
     		url = props.getProperty("jdbc.url");
