@@ -3,6 +3,8 @@ package com.looking_glass_consulting.log_server.entity;
 import javax.persistence.Column;
 import javax.persistence.Table;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
@@ -10,8 +12,9 @@ import javax.persistence.Id;
 public class SalesPerson {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "sales_person_id")
-	private int salesPersonId;
+	private int id;
 	
 	@Column(name = "first_name")
 	private String firstName;
@@ -30,12 +33,12 @@ public class SalesPerson {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public int getSalesPersonId() {
-		return salesPersonId;
+	public int getId() {
+		return id;
 	}
 
-	public void setSalesPersonId(int salesPersonId) {
-		this.salesPersonId = salesPersonId;
+	public void setId(int salesPersonId) {
+		this.id = salesPersonId;
 	}
 
 	public String getFirstName() {
@@ -64,7 +67,7 @@ public class SalesPerson {
 
 	@Override
 	public String toString() {
-		return "SalesPerson [salesPersonId=" + salesPersonId + ", firstName=" + firstName + ", lastName=" + lastName
+		return "SalesPerson [salesPersonId=" + id + ", firstName=" + firstName + ", lastName=" + lastName
 				+ ", phoneNumber=" + phoneNumber + "]";
 	}
 }

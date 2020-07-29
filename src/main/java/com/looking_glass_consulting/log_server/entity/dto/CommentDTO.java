@@ -13,7 +13,7 @@ public class CommentDTO {
 	public CommentDTO() {}
 	
 	public CommentDTO(Comment comment) {
-		this.commentId = comment.getCommentId();
+		this.commentId = comment.getId();
 		this.logDTO = new LogDTO(comment.getLog());
 		this.comment = comment.getComment();
 		this.statement = comment.getStatement();

@@ -2,9 +2,9 @@
 # JDBC connection properties
 #
 jdbc.driver=com.mysql.jdbc.Driver
-jdbc.url=jdbc:mysql://localhost:3306/compliance_project?useSSL=false
-jdbc.user=root
-jdbc.password=password123
+jdbc.url=URL_TO_DATABASE
+jdbc.user=USERNAME_FOR_DATABASE
+jdbc.password=PASSWORD_FOR_DATABASE
 
 #
 # Connection pool properties

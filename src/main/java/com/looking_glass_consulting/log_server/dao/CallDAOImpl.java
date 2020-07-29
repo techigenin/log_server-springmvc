@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.looking_glass_consulting.log_server.entity.Call;
-import com.looking_glass_consulting.log_server.entity.User;
 
 @Repository
 public class CallDAOImpl implements DbDAO<Call> {

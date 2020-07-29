@@ -34,7 +34,7 @@ public class UserDAOImpl implements DbDAO<User> {
 	public User getSingle(int id) {
 		Session currentSession = sessionFactory.getCurrentSession();
 		
-		Query<User> theQuery = currentSession.createQuery("from User where userId=:id", User.class);
+		Query<User> theQuery = currentSession.createQuery("from User where id=:id", User.class);
 		theQuery.setParameter("id", id);
 		
 		User user = null;
@@ -57,8 +57,9 @@ public class UserDAOImpl implements DbDAO<User> {
 	@Override
 	public void delete(int id) {
 		Session currentSession = sessionFactory.getCurrentSession();
+		System.out.println("deleting user: " + id);
 		
-		Query<User> theQuery = currentSession.createQuery("delete from User where id=:id", User.class);
+		Query theQuery = currentSession.createQuery("delete from User where id=:id");
 		theQuery.setParameter("id", id);
 		
 		theQuery.executeUpdate();

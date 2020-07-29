@@ -1,53 +1,56 @@
 package com.looking_glass_consulting.log_server.entity.dto;
 
-import com.looking_glass_consulting.log_server.entity.User;
+import java.time.LocalDate;
+
 import com.looking_glass_consulting.log_server.entity.Log;
+import com.looking_glass_consulting.log_server.entity.User;
 
 public class LogDTO {
 	
-	private int logId;
-	private CallDTO callDTO;
-	private User listener;
-	private String dateString;
+	private int id;
+	private CallDTO call;
+	private User user;
+	private LocalDate date;
 
 	public LogDTO() {}
 	
 	public LogDTO(Log log) {
-		this.logId = log.getLogId();
-		this.callDTO = new CallDTO(log.getCall());
-		this.listener = log.getUser();
-		this.dateString = log.getDate().toString();
+		this.id = log.getId();
+		this.call = new CallDTO(log.getCall());
+		this.user = log.getUser();
+		this.date = log.getDate();
 	}
 
-	public int getLogId() {
-		return logId;
+	public int getId() {
+		return id;
 	}
 
-	public void setLogId(int logId) {
-		this.logId = logId;
+	public void setId(int logId) {
+		this.id = logId;
 	}
 
-	public CallDTO getCallDTO() {
-		return callDTO;
+	public CallDTO getCall() {
+		return call;
 	}
 
-	public void setCallDTO(CallDTO callDTO) {
-		this.callDTO = callDTO;
+	public void setCall(CallDTO callDTO) {
+		this.call = callDTO;
 	}
 
-	public User getListener() {
-		return listener;
+	public User getUser() {
+		return user;
 	}
 
-	public void setListener(User listener) {
-		this.listener = listener;
+	public void setUser(User listener) {
+		this.user = listener;
 	}
 
-	public String getDateString() {
-		return dateString;
+	public String getDate() {
+		return date.toString();
 	}
 
-	public void setDateString(String dateString) {
-		this.dateString = dateString;
+	public void setDate(String dateString) {
+		dateString = dateString.split("T")[0];
+		this.date = LocalDate.parse(dateString);
 	}
 }

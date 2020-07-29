@@ -36,7 +36,7 @@ public class SalesPersonRestController {
 	
 	@PostMapping("/salesPersons")
 	public SalesPerson saveSalesPerson(@RequestBody SalesPerson theSalesPerson) {
-		theSalesPerson.setSalesPersonId(0);
+		theSalesPerson.setId(0);
 		salesPersonService.save(theSalesPerson);
 		
 		return theSalesPerson;
@@ -44,7 +44,7 @@ public class SalesPersonRestController {
 	
 	@PutMapping("/salesPersons")
 	public SalesPerson updateSalesPerson(@RequestBody SalesPerson theSalesPerson) {
-		SalesPerson tempSalesPerson = salesPersonService.getSingle(theSalesPerson.getSalesPersonId());
+		SalesPerson tempSalesPerson = salesPersonService.getSingle(theSalesPerson.getId());
 		
 		if (tempSalesPerson == null) {
 			throw new RuntimeException("No such salesPerson");

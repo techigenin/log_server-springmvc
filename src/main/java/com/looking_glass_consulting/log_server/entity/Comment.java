@@ -6,6 +6,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -18,8 +20,9 @@ import com.looking_glass_consulting.log_server.entity.dto.CommentDTO;
 public class Comment {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "comment_id")
-	private int commentId;
+	private int id;
 	
 	@ManyToOne(cascade = {
 		CascadeType.DETACH,
@@ -29,12 +32,15 @@ public class Comment {
 	}, fetch = FetchType.LAZY)
 	@JoinColumn(name = "log_id")
 	private Log log;
-	
-	@Column(name = "comment")
-	private String comment;
+
+	@Column(name="concern_level")
+	private String concernLvl;
 	
 	@Column(name = "statement")
 	private String statement;
+	
+	@Column(name = "comment")
+	private String comment;
 	
 	public String getStatement() {
 		return statement;
@@ -57,19 +63,19 @@ public class Comment {
 	}
 	
 	public Comment(CommentDTO commentDTO) {
-		this.commentId = commentDTO.getCommentId();
+		this.id = commentDTO.getCommentId();
 		this.log = new Log(commentDTO.getLogDTO());
 		this.comment = commentDTO.getComment();
 		this.statement = commentDTO.getStatement();
 		this.time = LocalTime.parse(commentDTO.getTimeString());
 	}
 
-	public int getCommentId() {
-		return commentId;
+	public int getId() {
+		return id;
 	}
 
-	public void setCommentId(int commentId) {
-		this.commentId = commentId;
+	public void setId(int commentId) {
+		this.id = commentId;
 	}
 
 	public Log getLog() {
@@ -98,7 +104,7 @@ public class Comment {
 
 	@Override
 	public String toString() {
-		return "Comment [commentId=" + commentId + ", log=" + log + ", comment=" + comment + ", time=" + time + "]";
+		return "Comment [commentId=" + id + ", log=" + log + ", comment=" + comment + ", time=" + time + "]";
 	}
 	
 	
