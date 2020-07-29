@@ -7,6 +7,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -20,14 +22,15 @@ import com.looking_glass_consulting.log_server.entity.dto.CallDTO;
 public class Call{
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "call_id")
-	private int callId;
+	private int id;
 	
 	@Column(name = "date")	
 	private LocalDate date;
 	
 	@Column(name = "duration")
-	private LocalTime duration;
+	private String duration;
 	
 	@OneToOne(cascade = 
 			{CascadeType.DETACH,
@@ -49,7 +52,7 @@ public class Call{
 	
 	public Call() {}
 
-	public Call(LocalDate date, LocalTime duration, SalesPerson salesPerson, Client client) {
+	public Call(LocalDate date, String duration, SalesPerson salesPerson, Client client) {
 		this.date = date;
 		this.duration = duration;
 		this.salesPerson = salesPerson;
@@ -57,19 +60,19 @@ public class Call{
 	}
 	
 	public Call(CallDTO callDTO) {
-		this.callId = callDTO.getCallId();
-		this.date = LocalDate.parse(callDTO.getDateString());
-		this.duration = LocalTime.parse(callDTO.getDurationString());
+		this.id = callDTO.getCallId();
+		this.date = LocalDate.parse(callDTO.getDate());
+		this.duration = callDTO.getDuration();
 		this.salesPerson = callDTO.getSalesPerson();
 		this.client = callDTO.getClient();
 	}
 
-	public int getCallId() {
-		return callId;
+	public int getId() {
+		return id;
 	}
 
-	public void setCallId(int callId) {
-		this.callId = callId;
+	public void setId(int callId) {
+		this.id = callId;
 	}
 
 	public LocalDate getDate() {
@@ -80,11 +83,11 @@ public class Call{
 		this.date = date;
 	}
 
-	public LocalTime getDuration() {
+	public String getDuration() {
 		return duration;
 	}
 
-	public void setDuration(LocalTime duration) {
+	public void setDuration(String duration) {
 		this.duration = duration;
 	}
 
@@ -106,7 +109,7 @@ public class Call{
 
 	@Override
 	public String toString() {
-		return "Call [callId=" + callId + ", date=" + date + ", duration=" + duration + ", salesPerson=" + salesPerson
+		return "Call [callId=" + id + ", date=" + date + ", duration=" + duration + ", salesPerson=" + salesPerson
 				+ ", client=" + client + "]";
 	}
 }
