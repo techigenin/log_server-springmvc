@@ -36,23 +36,18 @@ public class Comment {
 	@Column(name="concern_level")
 	private String concernLvl;
 	
+	@Column(name="reason")
+	private Character reason;
+	
 	@Column(name = "statement")
 	private String statement;
 	
 	@Column(name = "comment")
 	private String comment;
 	
-	public String getStatement() {
-		return statement;
-	}
-
-	public void setStatement(String statement) {
-		this.statement = statement;
-	}
-
 	@Column(name = "time")
 	private LocalTime time;
-	
+		
 	public Comment () {}
 
 	public Comment(Log log, String comment, String statement, LocalTime time) {
@@ -63,19 +58,20 @@ public class Comment {
 	}
 	
 	public Comment(CommentDTO commentDTO) {
-		this.id = commentDTO.getCommentId();
-		this.log = new Log(commentDTO.getLogDTO());
+		this.id = commentDTO.getId();
+		this.log = new Log(commentDTO.getLog());
 		this.comment = commentDTO.getComment();
+		this.reason = commentDTO.getReason();
 		this.statement = commentDTO.getStatement();
-		this.time = LocalTime.parse(commentDTO.getTimeString());
+		this.time = LocalTime.parse(commentDTO.getTime());
 	}
-
+	
 	public int getId() {
 		return id;
 	}
 
-	public void setId(int commentId) {
-		this.id = commentId;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public Log getLog() {
@@ -84,6 +80,30 @@ public class Comment {
 
 	public void setLog(Log log) {
 		this.log = log;
+	}
+
+	public String getConcernLvl() {
+		return concernLvl;
+	}
+
+	public void setConcernLvl(String concernLvl) {
+		this.concernLvl = concernLvl;
+	}
+
+	public Character getReason() {
+		return reason;
+	}
+
+	public void setReason(Character reason) {
+		this.reason = reason;
+	}
+
+	public String getStatement() {
+		return statement;
+	}
+
+	public void setStatement(String statement) {
+		this.statement = statement;
 	}
 
 	public String getComment() {
@@ -104,8 +124,7 @@ public class Comment {
 
 	@Override
 	public String toString() {
-		return "Comment [commentId=" + id + ", log=" + log + ", comment=" + comment + ", time=" + time + "]";
+		return "Comment [id=" + id + ", log=" + log + ", concernLvl=" + concernLvl + ", reason=" + reason
+				+ ", statement=" + statement + ", comment=" + comment + ", time=" + time + "]";
 	}
-	
-	
 }

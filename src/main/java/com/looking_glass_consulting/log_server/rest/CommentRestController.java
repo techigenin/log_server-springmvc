@@ -53,7 +53,7 @@ public class CommentRestController {
 	
 	@PutMapping("/comments")
 	public CommentDTO updateComment(@RequestBody CommentDTO commentDTO) {
-		Comment tempComment = commentService.getSingle(commentDTO.getCommentId());
+		Comment tempComment = commentService.getSingle(commentDTO.getId());
 		
 		if (tempComment == null) {
 			throw new RuntimeException("No such comment");

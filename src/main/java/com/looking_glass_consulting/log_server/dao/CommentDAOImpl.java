@@ -47,7 +47,7 @@ public class CommentDAOImpl implements DbDAO<Comment> {
 				+ "JOIN FETCH l.user "
 				+ "JOIN FETCH c.salesPerson "
 				+ "JOIN FETCH c.client "
-				+ "WHERE commentId=:id", 
+				+ "WHERE co.id=:id", 
 				Comment.class);
 		theQuery.setParameter("id", id);
 		
@@ -72,7 +72,7 @@ public class CommentDAOImpl implements DbDAO<Comment> {
 	public void delete(int id) {
 		Session currentSession = sessionFactory.getCurrentSession();
 		
-		Query<Comment> theQuery = currentSession.createQuery("delete from Comment where commentId=:id", Comment.class);
+		Query<Comment> theQuery = currentSession.createQuery("delete from Comment where id=:id", Comment.class);
 		theQuery.setParameter("id", id);
 		
 		theQuery.executeUpdate();
