@@ -36,23 +36,18 @@ public class Comment {
 	@Column(name="concern_level")
 	private String concernLvl;
 	
+	@Column(name="reason")
+	private Character reason;
+	
 	@Column(name = "statement")
 	private String statement;
 	
 	@Column(name = "comment")
 	private String comment;
 	
-	public String getStatement() {
-		return statement;
-	}
-
-	public void setStatement(String statement) {
-		this.statement = statement;
-	}
-
 	@Column(name = "time")
 	private LocalTime time;
-	
+		
 	public Comment () {}
 
 	public Comment(Log log, String comment, String statement, LocalTime time) {
@@ -66,10 +61,11 @@ public class Comment {
 		this.id = commentDTO.getId();
 		this.log = new Log(commentDTO.getLog());
 		this.comment = commentDTO.getComment();
+		this.reason = commentDTO.getReason();
 		this.statement = commentDTO.getStatement();
 		this.time = LocalTime.parse(commentDTO.getTime());
 	}
-
+	
 	public int getId() {
 		return id;
 	}
@@ -94,6 +90,22 @@ public class Comment {
 		this.concernLvl = concernLvl;
 	}
 
+	public Character getReason() {
+		return reason;
+	}
+
+	public void setReason(Character reason) {
+		this.reason = reason;
+	}
+
+	public String getStatement() {
+		return statement;
+	}
+
+	public void setStatement(String statement) {
+		this.statement = statement;
+	}
+
 	public String getComment() {
 		return comment;
 	}
@@ -112,7 +124,7 @@ public class Comment {
 
 	@Override
 	public String toString() {
-		return "Comment [id=" + id + ", log=" + log + ", concernLvl=" + concernLvl + ", statement=" + statement
-				+ ", comment=" + comment + ", time=" + time + "]";
-	}	
+		return "Comment [id=" + id + ", log=" + log + ", concernLvl=" + concernLvl + ", reason=" + reason
+				+ ", statement=" + statement + ", comment=" + comment + ", time=" + time + "]";
+	}
 }

@@ -7,6 +7,7 @@ public class CommentDTO {
 	private int id;
 	private LogDTO log;
 	private String concernLvl;
+	private Character reason;
 	private String comment;
 	private String statement;
 	private String time;
@@ -18,6 +19,7 @@ public class CommentDTO {
 		this.log = new LogDTO(comment.getLog());
 		this.concernLvl = comment.getConcernLvl();
 		this.comment = comment.getComment();
+		this.reason = comment.getReason();
 		this.statement = comment.getStatement();
 		this.time = comment.getTime().toString();
 	}
@@ -68,6 +70,14 @@ public class CommentDTO {
 
 	public void setTime(String time) {
 		this.time = time;
+	}
+	
+	public Character getReason() {
+		return reason;
+	}
+
+	public void setReason(Character reason) {
+		this.reason = reason;
 	}
 
 	@Override
