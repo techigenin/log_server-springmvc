@@ -44,7 +44,7 @@ public class AppConfig implements WebMvcConfigurer {
 		ComboPooledDataSource myDataSource = new ComboPooledDataSource();
 		
 		try  {
-			myDataSource.setDriverClass("com.mysql.jdbc.Driver");
+			myDataSource.setDriverClass("com.mysql.cj.jdbc.Driver");
 		} catch (PropertyVetoException exc ){
 			throw new RuntimeException(exc);
 		}

@@ -46,7 +46,7 @@ DROP TABLE IF EXISTS `comments`;
 CREATE TABLE `comments` (
   `comment_id` int NOT NULL AUTO_INCREMENT,
   `log_id` int,
-  `concern_level` varchar(10),
+  `concern_level` varchar(15),
   `statement` text,
   `comment` text,
   `time` varchar(10),
@@ -111,12 +111,12 @@ INSERT INTO `users` (`first_name`, `last_name`, `phone_number`, `email`, `status
 
 INSERT INTO `comments` (`log_id`, `concern_level`, `statement`, `comment`, `time`)
 	VALUES
-		(1, 'Good', 'Oh Gee Whiz!', 'So much good!', '00:01:15'),
-        (1, 'Excellent', 'So exciting', 'Even more good!', '00:25:25'),
-        (1, 'Concerning', 'The sun is green!', 'But why..?', '00:59:12'),
-        (2, 'Bad', 'Something bad', 'On No!', '01:03:02'),
-        (3, 'Bad', 'Creepy Crawlers!', '...!', '03:02:01'),
-        (3, 'Neutral', 'And then we had ice cream', 'Me too..?', '04:04:01');
+		(1, 'Commendable', 'Oh Gee Whiz!', 'So much good!', '00:01:15'),
+        (1, 'Commendable', 'So exciting', 'Even more good!', '00:25:25'),
+        (1, 'Problematic', 'The sun is green!', 'But why..?', '00:59:12'),
+        (2, 'Severe', 'Something bad', 'On No!', '01:03:02'),
+        (3, 'Severe', 'Creepy Crawlers!', '...!', '03:02:01'),
+        (3, 'Caution', 'And then we had ice cream', 'Me too..?', '04:04:01');
         
 INSERT INTO `logs` (`call_id`, `user_id`, `date`)
 	VALUES
